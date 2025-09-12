@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import './HomePage.css';
+
+
 
 export function HomePage() {
   return (
@@ -11,7 +12,7 @@ export function HomePage() {
         <button>Products</button>
         <button>About Us</button>
         <button>Contact</button>
-        <button onClick={()=>{
+        <button className='bg-amber-500'  onClick={()=>{
           alert("Redirecting to login page");
         }}>Login</button>
         <Link to='/login'><button>Go to Login Page</button></Link>
