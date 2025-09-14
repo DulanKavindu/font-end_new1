@@ -1,12 +1,73 @@
-import './loginpage.css';
+import axios from "axios";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
-export function Loginpage(){
-    return(
-        <div className="login-container">
-            <h1>Login Page</h1>
-            <input type="text" placeholder='Username'/><br/>
-            <input type="password" placeholder='Password'/><br/>
-            <button>Login</button>
-        </div>
-    )
+export function Loginpage() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  function login() {
+    axios
+      .post("http://localhost:3000/users/login", {
+        email: username,
+        password: password,
+      })
+      .then((res) => {
+        const user = res.data.user;
+        console.log(user.fristName);
+
+        if (!res.data.user) {
+          toast.error("Invalid email or password");
+          return;
+        }
+
+        // Save token
+        localStorage.setItem("token", res.data.token);
+
+        // Redirect based on user type
+        if (res.data.user.type == 'admin') {
+          window.location.href = '/admin';
+        } else{
+            window.location.href = '/';
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Something went wrong. Please try again!");
+      });
+  }
+
+  return (
+    <div className="w-full h-screen flex justify-center items-center bg-blue-100">
+      <div className="w-[450px] h-[450px] bg-blue-300 rounded-lg p-8">
+        <img
+          src="https://img.freepik.com/premium-vector/lock-icon-vector-illustration_53876-133628.jpg?w=2000"
+          alt="login"
+          className="w-[100px] h-[100px] mx-auto mb-4"
+        />
+        <span className="block mb-1">Email</span>
+        <input
+          type="text"
+          placeholder="Email"
+          className="w-full p-2 mb-4 rounded border border-gray-300"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <span className="block mb-1">Password</span>
+        <input
+          type="password"
+          placeholder="Password"
+          className="w-full p-2 mb-4 rounded border border-gray-300"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button
+          className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+          onClick={login}
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  );
 }
