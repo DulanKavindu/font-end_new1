@@ -3,6 +3,7 @@ import { BsGraphUp, BsBoxSeam, BsPerson, BsGear } from "react-icons/bs";
 import { BrowserRouter, Routes,Route } from 'react-router-dom'
 import { AdminProductPage } from "./admin/adminproductpage";
 import { ProductAddPage } from "./admin/productaddpage";
+import Editproduct from "./admin/editproductfrom";
 
 export function AdminPage() {
   return (
@@ -54,6 +55,7 @@ export function AdminPage() {
           <Route path='/customers' element={<div>customer Content</div>}/>
           <Route path='/*' element={<div>404 error</div>}/>
           <Route path='/products/productaddpage' element={<ProductAddPage/>}/>
+          <Route path ='/products/editproduct' element={<Editproduct></Editproduct>}></Route>
         </Routes>
         
 
