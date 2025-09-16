@@ -43,7 +43,7 @@ export function ProductAddPage() {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await axios.post("import.meta.env.VITE_BACKEND_URL+/products", product, {
+      const res = await axios.post(import.meta.env.VITE_BACKEND_URL+"/products", product, {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -108,7 +108,7 @@ export function ProductAddPage() {
        <label className="block mb-2">Upload Images</label>
       <input
         type="file"
-        multiple
+        multiple={true}
         className="w-full p-2 mb-4 border rounded"
         onChange={(e) => setImgFile((e.target.files))}
 />

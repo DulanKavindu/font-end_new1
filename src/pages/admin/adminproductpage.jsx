@@ -6,15 +6,21 @@ import { Link } from "react-router-dom";
 export function AdminProductPage() {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get("import.meta.env.VITE_BACKEND_URL+/products")
+
+  const getAllProduct = () => {
+ axios
+      .get(import.meta.env.VITE_BACKEND_URL+"/products")
       .then((res) => {
         if (res.data.products) {
           setProducts(res.data.products);
         }
       })
       .catch((err) => console.error(err));
+  }
+
+  
+  useEffect(() => {
+   getAllProduct();
   }, []);
 
   const handleEdit = (id) => {
@@ -66,12 +72,13 @@ export function AdminProductPage() {
                     
 
   const token = localStorage.getItem("token")
-axios.delete(`import.meta.env.VITE_BACKEND_URL+/products/${product.productid}`, {
+axios.delete(import.meta.env.VITE_BACKEND_URL+`/products/${product.productid}`, {
   headers: {
     Authorization: `Bearer ${token}`,
   },
 })
 .then(() => {
+  getAllProduct();
   alert("Product deleted successfully");
 })
 .catch((err) => {

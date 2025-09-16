@@ -25,7 +25,7 @@ export function Loginpage() {
         localStorage.setItem("token", res.data.token);
 
         if (res.data.user.type == 'admin') {
-          window.location.href = '/admin';
+          window.location.href = '/admin/*';
         } else{
             window.location.href = '/';
         }
