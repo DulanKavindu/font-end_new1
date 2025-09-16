@@ -8,23 +8,22 @@ export function Loginpage() {
 
   function login() {
     axios
-      .post("http://localhost:3000/users/login", {
+      .post(import.meta.env.VITE_BACKEND_URL+"/users/login", {
         email: username,
         password: password,
       })
       .then((res) => {
         const user = res.data.user;
-        console.log(user.fristName);
+        console.log(user);
 
         if (!res.data.user) {
           toast.error("Invalid email or password");
           return;
         }
 
-        // Save token
+        
         localStorage.setItem("token", res.data.token);
 
-        // Redirect based on user type
         if (res.data.user.type == 'admin') {
           window.location.href = '/admin';
         } else{

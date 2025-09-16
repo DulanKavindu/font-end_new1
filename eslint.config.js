@@ -13,6 +13,14 @@ export default defineConfig([
       reactHooks.configs['recommended-latest'],
       reactRefresh.configs.vite,
     ],
+    colors:
+    {
+      "primary":"#F8BBD0",
+      "secondory":"#FFF1E6",
+      "accent":"#6B4226"
+    }
+          
+    ,
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,

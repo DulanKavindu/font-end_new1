@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { BsGraphUp, BsBoxSeam, BsPerson, BsGear } from "react-icons/bs";
 import { BrowserRouter, Routes,Route } from 'react-router-dom'
 import { AdminProductPage } from "./admin/adminproductpage";
+import { ProductAddPage } from "./admin/productaddpage";
 
 export function AdminPage() {
   return (
@@ -52,6 +53,7 @@ export function AdminPage() {
           <Route path='/ordes' element={<div>oder Content</div>}/>
           <Route path='/customers' element={<div>customer Content</div>}/>
           <Route path='/*' element={<div>404 error</div>}/>
+          <Route path='/products/productaddpage' element={<ProductAddPage/>}/>
         </Routes>
         
 
