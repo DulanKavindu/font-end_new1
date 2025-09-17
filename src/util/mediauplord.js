@@ -3,7 +3,7 @@ const supabaseKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNieWR0dGx0bWtlamdoaHlhbWVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc5NjE4NDIsImV4cCI6MjA3MzUzNzg0Mn0.BDAoRT8Exw2AAm-I-gm8bsdRDfso55WTcAdFJoPZMZ0";
 
 import { createClient } from "@supabase/supabase-js";
-
+ const supabase = createClient(supabaseUrl, supabaseKey);
 export function Mediauplord(file) {
   return new Promise( (resolve, reject) => {
     if (file == null) {
@@ -18,7 +18,7 @@ export function Mediauplord(file) {
       return;
     }
 
-    const supabase = createClient(supabaseUrl, supabaseKey);
+   
     const timelaps = new Date().getTime();
     const newfilename = timelaps + file.name+ "." + extance;
 

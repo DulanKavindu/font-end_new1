@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function AdminProductPage() {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
 
   const getAllProduct = () => {
@@ -59,7 +60,9 @@ export function AdminProductPage() {
               </td>
               <td className="border border-gray-300 px-4 py-2 flex gap-2">
                 <button
-                  
+                  onClick={()=>{
+                   navigate("/admin/products/editproduct",{state:{product:product}})
+                  }}
                   className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
                 >
                   Edit
