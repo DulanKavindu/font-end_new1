@@ -108,7 +108,7 @@ export function Editproduct() {
         <label className="block mb-2">Upload Images</label>
         <input
           type="file"
-          multiple
+          multiple={true}
           className="w-full p-2 mb-4 border rounded"
           onChange={(e) => setImgFile(e.target.files)}
         />
