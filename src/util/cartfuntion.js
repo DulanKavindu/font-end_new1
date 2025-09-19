@@ -36,3 +36,16 @@ export function savecart(cart){
     localStorage.setItem("cart",JSON.stringify(cart))
 
 }
+
+export function deletecart(){
+  const cart =loardcart()
+
+    const index =cart.findIndex((items)=>{
+        return(items.productid===productid)
+    })
+    if(index!=-1)
+    {
+        cart.splice(index,1)
+    }
+    
+}
