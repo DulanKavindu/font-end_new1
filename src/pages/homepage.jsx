@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import Hadder from "../components/heder";
 import { Loginpage } from "./loginpage";
 import { Productvive } from "./home/productovervive";
+import { Productpage } from "./home/productpage";
+import { Cartpage } from "./home/cartpage";
 
 export function HomePage() {
   return (
@@ -12,6 +14,9 @@ export function HomePage() {
         <Routes>
           <Route path="/login" element={<Loginpage />} />
           <Route path="/productimfro/:id" element={<Productvive />} />
+        <Route path="/products" element={<Productpage />} />
+        <Route path="/cart" element={<Cartpage />} />
+
         </Routes>
       </div>
     </div>
