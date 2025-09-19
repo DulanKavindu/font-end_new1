@@ -25,7 +25,7 @@ export function Productvive() {
         console.error(err);
         setStatus("not found");
       });
-  }, [id]);
+  }, );
   function onclickaddtocart(){
       addcart(product.productid,1)
       toast.success("produt added to cart")
@@ -33,14 +33,14 @@ export function Productvive() {
 
   return ( 
     <div className="flex flex-col items-center justify-center h-[calc(100vh-80px)] w-full bg-gray-100 p-4">
-      {/* Loading state */}
+    
       {status === "loading" && (
         <div className="flex justify-center items-center">
           <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
       )}
 
-      {/* Not found state */}
+    
       {status === "not found" && (
         <div className="flex flex-col items-center justify-center p-8 bg-red-100 rounded-xl shadow-lg animate-pulse">
           <h1 className="text-3xl font-extrabold text-red-600 mb-2">404</h1>

@@ -10,12 +10,12 @@ export function Cartpage(){
     return(
 
         <div>{
-            cart.map((iemes)=>{
+            cart.map((iemes)=>(
                 <div key={iemes.productid}>
                     <h1>={iemes.productid}*{iemes.qut}</h1>
                     
                 </div>
-            })
+            ))
             }
             
         </div>
