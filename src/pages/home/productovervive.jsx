@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Imageslider } from "../../components/imagesider";
+import { addcart } from "../../util/cartfuntion";
+import toast from "react-hot-toast";
 export function Productvive() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -24,8 +26,12 @@ export function Productvive() {
         setStatus("not found");
       });
   }, [id]);
+  function onclickaddtocart(){
+      addcart(product.productid,1)
+      toast.success("produt added to cart")
+  }
 
-  return (
+  return ( 
     <div className="flex flex-col items-center justify-center h-[calc(100vh-80px)] w-full bg-gray-100 p-4">
       {/* Loading state */}
       {status === "loading" && (
@@ -57,6 +63,7 @@ export function Productvive() {
             <p className="text-green-600 font-bold mt-2">{product.price>product.lasprice}
                 <span className="line-through text-red-600 gap=2">LKR{product.price}</span>
                 <span>LKR{product.lasprice}</span>
+                <button type="button" onClick={onclickaddtocart}>Addtocart</button>
             </p>
           </div>
 

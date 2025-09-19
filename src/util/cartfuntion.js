@@ -13,7 +13,7 @@ export function addcart(productid,qut){
     const cart =loardcart()
 
     const index =cart.findIndex((items)=>{
-        items.productid==productid
+        return(items.productid===productid)
     })
 
     if(index==-1){
@@ -28,6 +28,7 @@ export function addcart(productid,qut){
             cart[index].qut=newqty
         }
     }
+    savecart(cart)
 }
 
 export function savecart(cart){
