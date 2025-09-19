@@ -13,7 +13,7 @@ export function addcart(productid,qut){
     const cart =loardcart()
 
     const index =cart.findIndex((items)=>{
-        return(items.productid===productid)
+        return(items.productid==productid)
     })
 
     if(index==-1){
@@ -37,15 +37,16 @@ export function savecart(cart){
 
 }
 
-export function deletecart(){
+export function deletecart(productid){
   const cart =loardcart()
 
     const index =cart.findIndex((items)=>{
-        return(items.productid===productid)
+        return(items.productid==productid)
     })
     if(index!=-1)
     {
         cart.splice(index,1)
     }
-    
+    savecart(cart)
+     return cart 
 }
