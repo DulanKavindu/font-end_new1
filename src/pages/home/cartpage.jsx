@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { Cartdard } from "../../components/cartcard";
 import { loardcart } from "../../util/cartfuntion";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export function Cartpage() {
   const [cart, setcart] = useState([]);
   const [total, settotal] = useState(0);
   const [descount, setdescount] = useState(0);
   const [lastprice, setlastprice] = useState(0);
-
+  const navigate = useNavigate()
   useEffect(() => {
     const c = loardcart();
     setcart(c);
@@ -27,29 +28,12 @@ export function Cartpage() {
   }, []);
 
    function checkoutbutton(){
-    const token = localStorage.getItem("token")
-    if(token==null){
-      return
-    }
-    axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/orders`,{
-        orderedItems:cart,
-        name:"dulan",
-        address:"jfiojfijoiofio,doijijdijdioj",
-        phoneNumber:"072541756"
-
-      },
-      {
-      headers: {
-    Authorization: `Bearer ${token}`,
-  },}
-    ).then((res)=>{
-      console.log(res.data)
-    }).catch((err)=>{
-      alert(err)
-    })
-
-      
+    
+      navigate("/shiping",{
+        state:{
+        item:loardcart()
+        }
+      })
 
   }
     

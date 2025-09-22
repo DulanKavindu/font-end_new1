@@ -4,6 +4,7 @@ import { Loginpage } from "./loginpage";
 import { Productvive } from "./home/productovervive";
 import { Productpage } from "./home/productpage";
 import { Cartpage } from "./home/cartpage";
+import { Shiping } from "./home/shipingpage";
 
 export function HomePage() {
   return (
@@ -16,6 +17,7 @@ export function HomePage() {
           <Route path="/productimfro/:id" element={<Productvive />} />
         <Route path="/products" element={<Productpage />} />
         <Route path="/cart" element={<Cartpage />} />
+        <Route path="/shiping" element={<Shiping />} />
 
         </Routes>
       </div>

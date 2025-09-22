@@ -46,7 +46,8 @@ export function deletecart(productid){
     if(index!=-1)
     {
         cart.splice(index,1)
+        save(cart)
     }
-    savecart(cart)
-     return cart 
+    
+   
 }
