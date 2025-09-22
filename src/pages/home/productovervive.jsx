@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Imageslider } from "../../components/imagesider";
 import { addcart } from "../../util/cartfuntion";
 import toast from "react-hot-toast";
@@ -8,7 +8,7 @@ export function Productvive() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [status, setStatus] = useState("loading");
-
+  const navigate = useNavigate()
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/products/${id}`)
@@ -30,7 +30,15 @@ export function Productvive() {
       addcart(product.productid,1)
       toast.success("produt added to cart")
   }
+function onBynow(){
+  navigate("/shiping",{
+    state:{
+      productid:product.productid,
+      qty :1
+    }
+  })
 
+}
   return ( 
     <div className="flex flex-col items-center justify-center h-[calc(100vh-80px)] w-full bg-gray-100 p-4">
     
@@ -64,6 +72,17 @@ export function Productvive() {
                 <span className="line-through text-red-600 gap=2">LKR{product.price}</span>
                 <span>LKR{product.lasprice}</span>
                 <button type="button" onClick={onclickaddtocart}>Addtocart</button>
+                <button type="button" >Buy Now</button>
+            </p>
+            <p className="text-green-600 font-bold mt-2">{product.price>product.lasprice}
+                
+                <button type="button" onClick={onclickaddtocart}>Addtocart</button>
+                
+            </p>
+             <p className="text-green-600 font-bold mt-2">{product.price>product.lasprice}
+                
+                
+                <button type="button"  onClick={onBynow}>Buy Now</button>
             </p>
           </div>
 
