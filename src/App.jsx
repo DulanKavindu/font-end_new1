@@ -8,12 +8,16 @@ import { SignupPage } from './pages/sinuppage'
 import { AdminPage } from './pages/addminpage'
 import { Toaster } from 'react-hot-toast'
 import { UploadPhotos } from './pages/home/test'
+import { GoogleOAuthProvider } from '@react-oauth/google'
 
 function App() {
   return (
     <>
     <BrowserRouter>
     <Toaster></Toaster>
+   <GoogleOAuthProvider clientId="451751010073-ib38bap8b9fa3frfcinco087aq0tdfbi.apps.googleusercontent.com">
+
+    
     <Routes path='/*'>
       <Route path='/' element={<HomePage/>}/>
       <Route path='/login' element={<Loginpage/>}/>
@@ -24,6 +28,8 @@ function App() {
       
 
     </Routes>
+     </GoogleOAuthProvider>
+   
     </BrowserRouter>
       
     </>

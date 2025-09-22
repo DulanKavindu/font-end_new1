@@ -28,6 +28,7 @@ export function Cartdard(props){
     },[])
 
 return (
+    <div>
   <div className="bg-white shadow-lg rounded-xl overflow-hidden p-6">
     <table className="w-full border-collapse hover:not-focus:bg-blue-500">
     
@@ -44,7 +45,7 @@ return (
      
       <tbody>
         <tr className="border-b hover:bg-gray-50 transition">
-          {/* Product Info */}
+      
           <td className="py-3 px-4 flex items-center gap-3">
             <img
               src={product?.image?.[0] || "/placeholder.png"}
@@ -82,11 +83,8 @@ return (
         </tr>
       </tbody>
     </table>
-    <div className="mt-6 flex justify-end">
-      <button className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg shadow hover:bg-green-700 transition">
-        Checkout →
-      </button>
-    </div>
+   
+  </div>
   </div>
  
 
